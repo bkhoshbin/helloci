@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: python:3.8
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            pip install Flask pytest prometheus-client
+      - run:
+          name: Run tests
+          command: |
+            pytest
+      - run:
+          name: Build Docker image
+          command: |
+            docker build -t flask-app .
