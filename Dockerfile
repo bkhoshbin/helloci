@@ -3,9 +3,11 @@ FROM python:3.8
 # Set the working directory to /app
 WORKDIR /app
 
-COPY . /app
-WORKDIR /app
-RUN pip install Flask prometheus-client pytest requests
+# Copy the required files to the container
+COPY requirements.txt ./
+COPY app.py ./
+
+#RUN pip install Flask prometheus-client pytest requests
 
 
 # Set the environment variable for Flask
