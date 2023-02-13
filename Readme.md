@@ -1,5 +1,5 @@
 
-
+caprover deploy --appToken <YOUR_APP_TOKEN_HERE> --caproverUrl https://captain.magellon.org --imageName khoshbin/magellon-demo01 --appName demo01
 
 docker build -t flask-app .
 
