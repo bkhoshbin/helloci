@@ -13,7 +13,7 @@ REQUEST_TIME = Summary('request_processing_seconds', 'The time spent processing 
 @REQUEST_TIME.time()
 def add(a, b):
     REQUEST_COUNT.inc()
-    return str(a + b)
+    return str(a + b+4)
 
 @app.route("/multiply/<int:a>/<int:b>")
 @REQUEST_TIME.time()
@@ -24,7 +24,7 @@ def multiply(a, b):
 
 @app.route('/')
 def hello_world():  # put application's code here
-    return 'Hello World!'
+    return 'Hello World2!'
 
 
 

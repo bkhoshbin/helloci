@@ -29,7 +29,27 @@ jobs:
       - run:
           name: Build Docker image
           command: |
-            docker build -t my-flask-app .
+            docker build -t khoshbin/magellon-demo01 .
+      
+
+      # Tag the image for Docker Hub
+      - run:
+          name: Tag Docker Image
+          command: |
+            docker tag khoshbin/magellon-demo01:latest khoshbin/magellon-demo01:$CIRCLE_SHA1
+
+      # Log in to Docker Hub
+      - run:
+          name: Login to Docker Hub
+          command: |
+            echo behd1d2 | docker login -u khoshbin --password-stdin
+
+      # Push the Docker image to Docker Hub
+      - run:
+          name: Push Docker Image
+          command: |
+            docker push khoshbin/magellon-demo01:$CIRCLE_SHA1
+            docker push khoshbin/magellon-demo01:latest
 
       # Push the Docker image to Docker Hub
 #      - run:
@@ -38,6 +58,20 @@ jobs:
 #            echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
 #            docker tag my-flask-app $DOCKER_USERNAME/my-flask-app
 #            docker push $DOCKER_USERNAME/my-flask-app
+
+
+#            - add_ssh_keys:
+#                fingerprints:
+#                  - "your_server_ssh_fingerprint"
+#
+#            - run:
+#                name: Download and run Docker image
+#                command: |
+#                  ssh your_username@your_server_ip << EOF
+#                  docker pull $DOCKER_USERNAME/my-flask-app
+#                  docker run -d -p 8080:8080 $DOCKER_USERNAME/my-flask-app
+#                  EOF
+
 
 workflows:
   version: 2
