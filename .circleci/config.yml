@@ -84,19 +84,15 @@ jobs:
             SSH_PRIVATE_KEY: "${SSH_PRIVATE_KEY}"
       - run:
           name: Set Key Permission
-          command: chmod 600 id_rsa
+          command: chmod 777 id_rsa
+
       - run:
-          - name: SSH into remote server
-            type: ssh
-            environment:
-              USERNAME: root
-              PASSWORD: "${SSH_Password}"
-            hosts:
-              157.230.222.170:
-            command: |
-              echo "$PASSWORD" | apt-get update
-              echo "$PASSWORD" | docker pull khoshbin/magellon-demo01:latest
+          name: Connect to remote Debian server
+          command: |
+            ssh -T root@157.230.222.170 << EOF
               caprover deploy --appToken ${hellociAppToken} --caproverUrl https://captain.magellon.org --imageName khoshbin/magellon-demo01 --appName demo01
+            EOF
+             
 
 #          name: Deploy to Remote Server
 #          command: |
