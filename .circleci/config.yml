@@ -85,16 +85,16 @@ jobs:
       - run:
           name: Set Key Permission
           command: chmod 777 id_rsa
-
-      - name: SSH into remote server
-        uses: appleboy/ssh-action@master
-        with:
-          host: 157.230.222.170
-          username: root
-          password: S0meReall#23034
-          script: |
-            echo "Deploying to Caprover"
-            caprover deploy --appToken ${hellociAppToken} --caproverUrl https://captain.magellon.org --imageName khoshbin/magellon-demo01 --appName demo01
+      - run:
+          name: SSH into remote server
+          uses: appleboy/ssh-action@master
+          with:
+            host: 157.230.222.170
+            username: root
+            password: S0meReall#23034
+            script: |
+              echo "Deploying to Caprover"
+              caprover deploy --appToken ${hellociAppToken} --caproverUrl https://captain.magellon.org --imageName khoshbin/magellon-demo01 --appName demo01
 
 #      - run:
 #          name: Connect to remote Debian server
