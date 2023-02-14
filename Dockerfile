@@ -9,6 +9,8 @@ COPY app.py ./
 
 #RUN pip install Flask prometheus-client pytest requests
 
+# Install the required packages
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Set the environment variable for Flask
 ENV FLASK_APP=app.py
