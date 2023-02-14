@@ -1,8 +1,8 @@
 from flask import Flask
+
+
 app = Flask(__name__)
 
-import os
-import time
 from prometheus_client import Counter, Summary
 
 # Initialize request counters and processing time summaries
@@ -13,13 +13,20 @@ REQUEST_TIME = Summary('request_processing_seconds', 'The time spent processing 
 @REQUEST_TIME.time()
 def add(a, b):
     REQUEST_COUNT.inc()
-    return str(a + b+4)
+    return addNumbers(a, b)
+
 
 @app.route("/multiply/<int:a>/<int:b>")
 @REQUEST_TIME.time()
 def multiply(a, b):
     REQUEST_COUNT.inc()
+    return multiplyNumbers(a, b)
+
+def multiplyNumbers(a, b):
     return str(a * b)
+
+def addNumbers(a, b):
+    return str(a + b)
 
 
 @app.route('/')
