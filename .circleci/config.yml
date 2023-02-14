@@ -77,14 +77,14 @@ jobs:
       enabled: true
     steps:
       - checkout
-      - run:
-          name: SSH Key
-          command: echo "$SSH_PRIVATE_KEY" > id_rsa
-          environment:
-            SSH_PRIVATE_KEY: "${SSH_PRIVATE_KEY}"
-      - run:
-          name: Set Key Permission
-          command: chmod 777 id_rsa
+#      - run:
+#          name: SSH Key
+#          command: echo "$SSH_PRIVATE_KEY" > id_rsa
+#          environment:
+#            SSH_PRIVATE_KEY: "${SSH_PRIVATE_KEY}"
+#      - run:
+#          name: Set Key Permission
+#          command: chmod 777 id_rsa
 
 
       - add_ssh_keys:
@@ -93,7 +93,7 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
-            ssh -o StrictHostKeyChecking=no root@$157.230.222.170 "caprover deploy --appToken ${hellociAppToken} --caproverUrl https://captain.magellon.org --imageName khoshbin/magellon-demo01 --appName demo01"
+            ssh -o StrictHostKeyChecking=no root@157.230.222.170 "caprover deploy --appToken ${hellociAppToken} --caproverUrl https://captain.magellon.org --imageName khoshbin/magellon-demo01 --appName demo01"
           
 
 #      - run:
