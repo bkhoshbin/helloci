@@ -85,10 +85,10 @@ jobs:
       - run:
           name: Set Key Permission
           command: chmod 600 id_rsa
-#      - run:
-#          name: Deploy to Remote Server
-#          command: |
-#            ssh -o StrictHostKeyChecking=no -i id_rsa root@magellon.org "docker pull khoshbin/magellon-demo01:latest && docker run -d --name magellon-demo01 -p 80:5000 khoshbin/magellon-demo01"
+      - run:
+          name: Deploy to Remote Server
+          command: |
+            ssh -o StrictHostKeyChecking=no -i id_rsa root@magellon.org "docker pull khoshbin/magellon-demo01:latest && caprover deploy --appToken ${hellociAppToken} --caproverUrl https://captain.magellon.org --imageName khoshbin/magellon-demo01 --appName demo01"
 
 
 

@@ -13,7 +13,7 @@ run command line pytest
 
 docker run -p 80:80 -p 443:443 -p 3000:3000 -v /var/run/docker.sock:/var/run/docker.sock -v /captain:/captain caprover/caprover
 
-caprover deploy --appToken <YOUR_APP_TOKEN_HERE> --caproverUrl https://captain.magellon.org --imageName khoshbin/magellon-demo01 --appName demo01
+caprover deploy --appToken 28e1a156f2810859 --caproverUrl https://captain.magellon.org --imageName khoshbin/magellon-demo01 --appName demo01
 
 caprover login
 docker pull khoshbin/magellon-demo01
