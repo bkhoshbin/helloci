@@ -86,10 +86,25 @@ jobs:
           name: Set Key Permission
           command: chmod 600 id_rsa
       - run:
-          name: Deploy to Remote Server
-          command: |
-            ssh -o StrictHostKeyChecking=no -i id_rsa root@magellon.org "docker pull khoshbin/magellon-demo01:latest && caprover deploy --appToken ${hellociAppToken} --caproverUrl https://captain.magellon.org --imageName khoshbin/magellon-demo01 --appName demo01"
+          - name: SSH into remote server
+            type: ssh
+            environment:
+              USERNAME: root
+              PASSWORD: "${SSH_Password}"
+            hosts:
+              <YOUR_REMOTE_SERVER_HOST>:
+            command: |
+              echo "$PASSWORD" | apt-get update
+              echo "$PASSWORD" | docker pull khoshbin/magellon-demo01:latest
+              caprover deploy --appToken ${hellociAppToken} --caproverUrl https://captain.magellon.org --imageName khoshbin/magellon-demo01 --appName demo01
 
+#          name: Deploy to Remote Server
+#          command: |
+#            ssh -o StrictHostKeyChecking=no root@magellon.org <<EOF
+#              docker stop magellon-demo01 || true
+#              docker pull khoshbin/magellon-demo01:latest || true
+#              caprover deploy --appToken ${hellociAppToken} --caproverUrl https://captain.magellon.org --imageName khoshbin/magellon-demo01 --appName demo01
+#            EOF
 
 
 workflows:
