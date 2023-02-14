@@ -92,7 +92,7 @@ jobs:
               USERNAME: root
               PASSWORD: "${SSH_Password}"
             hosts:
-              <YOUR_REMOTE_SERVER_HOST>:
+              157.230.222.170:
             command: |
               echo "$PASSWORD" | apt-get update
               echo "$PASSWORD" | docker pull khoshbin/magellon-demo01:latest
