@@ -100,7 +100,6 @@ jobs:
           command: |
             ssh -vvv -o StrictHostKeyChecking=no  root@157.230.222.170 "caprover deploy --appToken ${hellociAppToken} --caproverUrl https://captain.magellon.org --imageName khoshbin/magellon-demo01 --appName demo01"
 
-
 #  sshpass -p S0meReall#23034
 #      - run:
 #          name: SSH into remote server
