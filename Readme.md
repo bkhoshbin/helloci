@@ -48,3 +48,12 @@ To get the private key and fingerprint from your remote server for use in your C
     To use the private key in your config.yml file, you can add the add_ssh_keys step to your job, as shown in the example in my previous answer. In the fingerprints field, you can include the fingerprint of the private key (which is also displayed in the CircleCI web interface) to ensure that only authorized keys are used to connect to your server.
 
 Note: Be sure to keep your private key secure and do not share it with others. You should also take appropriate security measures to protect your remote server, such as configuring your firewall and using strong passwords.
+
+
+MySql:
+
+sudo docker run -d --name=mysql2 -e MYSQL_ROOT_PASSWORD=behd1d2 -e MYSQL_USER=behdad -e MYSQL_PASSWORD=behd1d2 -e MYSQL_DATABASE=magellon01 -v /tmp/mysql/data:/var/lib/mysql -p 3306:3306 mysql:latest
+
+mysql as graphql 
+
+ssh-keygen -t ed25519 -C "b.khoshbin@gmail.com"
