@@ -89,12 +89,19 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "2c:88:76:27:9a:05:42:c2:f8:01:5f:34:7d:58:d9:38"
-#      - run:
-#          name: Install sshpass
-#          command: |
-#            sudo apt-get update
-#            sudo apt-get install -y sshpass
-#            sudo apt-get update
+      - run:
+          name: Install sshpass
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y sshpass
+            sudo apt-get update
+
+      - run:
+          name: Add SSH key to remote server
+          command: |
+            ssh-keyscan -H 157.230.222.170 >> ~/.ssh/known_hosts
+            sshpass -p S0meReall#23034 ssh-copy-id -i ~/.ssh/id_rsa.pub root@157.230.222.170
+
       - run:
           name: Deploy Over SSH
           command: |
