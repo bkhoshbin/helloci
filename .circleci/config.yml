@@ -88,7 +88,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - "93:71:4d:03:ca:d6:8f:9b:30:13:c9:2d:56:96:04:ff"
+            - "2c:88:76:27:9a:05:42:c2:f8:01:5f:34:7d:58:d9:38"
 #      - run:
 #          name: Install sshpass
 #          command: |
